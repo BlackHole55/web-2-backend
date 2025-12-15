@@ -9,6 +9,20 @@ form.addEventListener('submit', async (e) => {
     const height = Number(formData.get('height'));
     const weight = Number(formData.get('weight'));
 
+    // Validate
+    if (!height || !weight) {
+        alert("Height and weight are required.");
+    }
+    if (isNaN(height) || isNaN(weight)) {
+        alert("Height and weight must be numbers.");
+    }
+    if (height < 50 || height > 300) {
+        alert("Height must be between 50 and 250 cm.");
+    }
+    if (weight < 10 || weight > 500) {
+        alert("Weight must be between 10 and 500 kg.");
+    }
+
     try {
         const response = await fetch('http://localhost:3000/calculate-bmi', {
             method: 'POST',
