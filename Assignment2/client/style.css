@@ -1,0 +1,59 @@
+body {
+    background-color: #007D76;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.info {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+#getRandomUser {
+    margin-bottom: 10px;
+}
+
+.card {
+    background-color: #B5BEB2;
+    border: 3px solid #E8E8E8;
+    border-bottom: 3px solid black;
+    border-right: 3px solid black;
+    padding: 20px;
+    display: none;
+}
+
+#profilePicture {
+    margin-right: 10px;
+    border: 2px solid black;
+    border-bottom: 2px solid #E8E8E8;
+    border-right: 2px solid #E8E8E8;
+}
+
+.location {
+    display: flex;
+    gap: 5px;
+}
+
+#flag {
+    width: 150px;
+}
+
+#exchangeRate {
+    padding-top: 5px;
+}
+
+#newsInfo {
+    width: 400px;
+}
+
+#newsImg {
+    width: 50%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
