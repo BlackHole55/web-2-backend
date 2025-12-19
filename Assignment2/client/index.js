@@ -36,6 +36,7 @@ const newsElements = {
 
 document.getElementById('getRandomUser').addEventListener('click', async (e) => {
     try {
+        // Fetch random user
         const responseUser = await fetch('http://localhost:3000/randomuser')
 
         if (!responseUser.ok) {
@@ -61,6 +62,7 @@ document.getElementById('getRandomUser').addEventListener('click', async (e) => 
         userElements.city.innerText = randomUser.location.city + ','
         userElements.address.innerText = address
 
+        // Fetch country
         const responseCountry = await fetch(`http://localhost:3000/country?country=${randomUser.location.country}`)
 
         if (!responseCountry.ok) {
@@ -100,6 +102,7 @@ document.getElementById('getRandomUser').addEventListener('click', async (e) => 
         countryElements.languages.innerHTML = languages
         countryElements.currency.innerText = 'Currency: ' + currency
 
+        // Fetch currency
         const responseCurrency = await fetch(`http://localhost:3000/currency?currency=${currencyCode}`)
 
         if (!responseCurrency.ok) {
@@ -114,6 +117,7 @@ document.getElementById('getRandomUser').addEventListener('click', async (e) => 
         currencyElements.USD.innerText = USD
         currencyElements.KZT.innerText = KZT
 
+        // Fetch news
         const responseNews = await fetch(`http://localhost:3000/news?country=${countryCca2}`)
 
         if (!responseNews.ok) {
@@ -134,7 +138,6 @@ document.getElementById('getRandomUser').addEventListener('click', async (e) => 
         }else {
             newsElements.headline.innerText = `No news from ${country.name.common}`
         }
-        
 
     } catch (err) {
         console.error("Fetch error:", err)
