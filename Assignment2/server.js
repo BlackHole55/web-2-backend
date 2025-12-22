@@ -37,9 +37,7 @@ app.get('/currency', async (req, res) => {
 })
 
 app.get('/news', async (req, res) => {
-    const country = req.query.country
-
-    const response = await fetch(`https://newsapi.org/v2/top-headlines?country=${country}&apiKey=${process.env.NEWS_API_KEY}`)
+    const response = await fetch(`https://newsapi.org/v2/top-headlines?country=us&apiKey=${process.env.NEWS_API_KEY}`)
     const data = await response.json()
     res.send(data)
 })
