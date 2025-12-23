@@ -43,8 +43,7 @@ document.getElementById('getRandomUser').addEventListener('click', async (e) => 
             throw new Error(`HTTP error (randomuser API) ${responseUser.status}`)
         }
 
-        const dataUser = await responseUser.json()
-        const randomUser = dataUser.results[0]
+        const randomUser = await responseUser.json()
 
         const fullName = randomUser.name.first + ' ' + randomUser.name.last
         const dob = new Date(randomUser.dob.date)
@@ -69,13 +68,7 @@ document.getElementById('getRandomUser').addEventListener('click', async (e) => 
             throw new Error(`HTTP error (restcountries API) ${responseCountry.status}`)
         }
 
-        const dataCountry = await responseCountry.json()
-        let country = ''
-        for (const value of dataCountry) {
-            if (randomUser.location.country == value.name.common) {
-                country = value
-            }
-        }
+        const country = await responseCountry.json()
 
         let languages = ""
         const langCount = Object.keys(country.languages).length

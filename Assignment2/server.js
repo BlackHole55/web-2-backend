@@ -17,7 +17,9 @@ app.get('/', (req, res) => {
 app.get('/randomuser', async (req, res) => {
     const response = await fetch('https://randomuser.me/api/')
     const data = await response.json()
-    res.send(data)
+    const result = data.results[0]
+
+    res.send(result)
 })
 
 app.get('/country', async (req, res) => {
@@ -25,7 +27,15 @@ app.get('/country', async (req, res) => {
     
     const response = await fetch(`https://restcountries.com/v3.1/name/${country}`)
     const data = await response.json()
-    res.send(data)
+    
+    let countryRes = ''
+    for (const value of data) {
+        if (country == value.name.common) {
+            countryRes = value
+        }
+    }
+
+    res.send(countryRes)
 })
 
 app.get('/currency', async (req, res) => {
