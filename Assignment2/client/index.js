@@ -119,6 +119,8 @@ document.getElementById('getRandomUser').addEventListener('click', async (e) => 
 
         const dataNews = await responseNews.json()
 
+        console.log(dataNews)
+
         newsInfo.style.display = 'block'
 
         if (dataNews.articles.length > 0) {
@@ -127,7 +129,8 @@ document.getElementById('getRandomUser').addEventListener('click', async (e) => 
             newsElements.headline.innerText = news.title
             newsElements.description.innerText = news.description
             newsElements.newsImg.src = news.urlToImage
-            newsElements.source.src = news.url
+            newsElements.source.innerText = 'Source'
+            newsElements.source.href = news.url
         }else {
             newsElements.headline.innerText = `No news from ${country.name.common}`
         }
