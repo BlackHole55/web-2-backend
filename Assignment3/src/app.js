@@ -1,14 +1,16 @@
 const express = require("express");
+const path = require("path");
 const blogRoutes = require("./routes/blog");
 
 const app = express();
 
 app.use(express.json());
+app.use(express.static(path.join(__dirname, "..", "client")));
 
-app.use("/api/blogs", blogRoutes);
+app.use("/blogs", blogRoutes);
 
 app.get("/", (req, res) => {
-    res.send("API is running");
+    res.sendFile(path.join(__dirname, "..", "/client/index.html"));
 });
 
-module.exports = app
+module.exports = app;
