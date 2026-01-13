@@ -56,4 +56,18 @@ router.put("/:id", async (req, res) => {
     }
 });
 
+router.delete("/:id", async (req, res) => {
+    try {
+        const blog = await Blog.findByIdAndDelete(req.params.id);
+        
+        if (!blog) {
+            return res.status(404).json({ message: "Blog not found" });
+        }
+
+        res.status(204).send();
+    } catch (err) {
+        res.status(400).json(err.message);
+    }
+});
+
 module.exports = router;
