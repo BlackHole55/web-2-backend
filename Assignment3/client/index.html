@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Blog API Client</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h2>Create Blog</h2>
+  <input id="title" placeholder="Title">
+  <input id="body" placeholder="Body" type="text">
+  <input id="author" placeholder="By default: Anonymous">
+  <button onclick="createBlog()">Create</button>
+
+  <h2>Find by ID</h2>
+  <input id="blogId" placeholder="ID">
+  <button onclick="findById()">Find</button>
+
+  <h2>Blogs</h2>
+  <ul id="blogList"></ul>
+
+  <script src="index.js"></script>
+</body>
+</html>
