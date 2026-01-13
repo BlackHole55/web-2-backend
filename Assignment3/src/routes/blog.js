@@ -14,10 +14,20 @@ router.get("/", async (req, res) => {
 
 router.post("/", async (req, res) => {
     try {
-        const blog = await Blog.create(req.body)
-        res.status(201).json(blog)
+        const blog = await Blog.create(req.body);
+        res.status(201).json(blog);
     } catch (err) {
-        res.status(400).json(err.message)
+        res.status(400).json(err.message);
+    }
+});
+
+router.get("/:id", async (req, res) => {
+    try {
+        const id = req.params.id;
+        const blog = await Blog.findById(id);
+        res.json(blog)
+    } catch (err) {
+        res.status(400).json(err.message);
     }
 });
 
