@@ -23,9 +23,34 @@ router.post("/", async (req, res) => {
 
 router.get("/:id", async (req, res) => {
     try {
-        const id = req.params.id;
-        const blog = await Blog.findById(id);
-        res.json(blog)
+        const blog = await Blog.findById(req.params.id);
+
+        if (!blog) {
+            return res.status(404).json({ message: "Blog not found" });
+        }
+
+        res.json(blog);
+    } catch (err) {
+        res.status(400).json(err.message);
+    }
+});
+
+router.put("/:id", async (req, res) => {
+    try {
+        const blog = await Blog.findByIdAndUpdate(
+            req.params.id,
+            req.body,
+            {
+                new: true,
+                runValidators: true
+            }
+        );
+
+        if (!blog) {
+            return res.status(404).json({ message: "Blog not found" });
+        }
+        
+        res.json(blog);
     } catch (err) {
         res.status(400).json(err.message);
     }
