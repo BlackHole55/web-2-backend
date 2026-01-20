@@ -10,4 +10,4 @@ const climateSchema = new mongoose.Schema(
     }
 );
 
-module.exports = mongoose.model("Climate", climateSchema);
+module.exports = mongoose.model("Climate", climateSchema, "climate");
