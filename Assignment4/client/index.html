@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Climate Dashboard</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="sidebar">
+    <h2>Filters</h2>
+    <div class="input-group">
+        <label>Start Date</label>
+        <input type="date" id="start_date" value="2013-01-01" min="2013-01-01" max="2017-01-01">
+    </div>
+    <div class="input-group">
+        <label>End Date</label>
+        <input type="date" id="end_date" value="2017-01-01" min="2013-01-01" max="2017-01-01">
+    </div>
+
+    <div class="input-group">
+        <label>Select Metric</label>
+        <select id="field_selector">
+            <option value="meantemp">Temperature</option>
+            <option value="humidity">Humidity</option>
+            <option value="meanpressure">Pressure</option>
+        </select>
+    </div>
+
+    <button onclick="updateDashboard()">Update Chart</button>
+</div>
+
+<div id="main">
+    <div id="metrics">
+        <div class="metric-card"><strong>Avg:</strong> <span id="m_avg">-</span></div>
+        <div class="metric-card"><strong>Min:</strong> <span id="m_min">-</span></div>
+        <div class="metric-card"><strong>Max:</strong> <span id="m_max">-</span></div>
+        <div class="metric-card"><strong>Std Dev:</strong> <span id="m_std">-</span></div>
+        <div class="metric-card"><strong>Count:</strong> <span id="m_count">-</span></div>
+    </div>
+    <br>
+    <canvas id="timeSeriesChart"></canvas>
+</div>
+
+<script src="index.js"></script>
+</body>
+</html>
