@@ -5,7 +5,6 @@ async function updateDashboard() {
     const end = document.getElementById('end_date').value;
     const selectedField = document.getElementById('field_selector').value;
 
-    // 1. Fetch Metrics
     const metricsRes = await fetch(`/climate/metrics?start_date=${start}&end_date=${end}&field=${selectedField}`);
     const metrics = await metricsRes.json();
     
@@ -15,7 +14,6 @@ async function updateDashboard() {
     document.getElementById('m_std').innerText = metrics.stdDev?.toFixed(2) || 0;
     document.getElementById('m_count').innerText = metrics.count || 0;
 
-    // 2. Fetch Time-Series Data
     const dataRes = await fetch(`/climate?start_date=${start}&end_date=${end}`);
     const rawData = await dataRes.json();
 
@@ -24,10 +22,9 @@ async function updateDashboard() {
 
     console.log(values)
 
-    // 3. Render Chart
     const ctx = document.getElementById('timeSeriesChart').getContext('2d');
     
-    if (myChart) myChart.destroy(); // Clear old chart before redrawing
+    if (myChart) myChart.destroy();
 
     myChart = new Chart(ctx, {
         type: 'line',
@@ -51,5 +48,4 @@ async function updateDashboard() {
     });
 }
 
-// Initial load
 updateDashboard();
